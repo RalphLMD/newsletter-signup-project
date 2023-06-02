@@ -37,10 +37,10 @@ app.post("/", function(request, response){
     };
 
     const jsonData = JSON.stringify(data)
-    const url = "https://us21.api.mailchimp.com/3.0/lists/fef71c021e"
+    const url = process.env.MAIL_CHIMP_URL
     const options = {
         method: "POST",
-        auth: "admin:636a3ff77d86a64302a8dab06c54db87-us21"
+        auth: process.env.MAIL_CHIMP_API
     }
 
     const req = https.request(url, options, function(res) {
@@ -64,5 +64,3 @@ app.post("/error", function(request, response){
     response.redirect("/")
 })
 
-// API KEY: 636a3ff77d86a64302a8dab06c54db87-us21
-// Audience ID: fef71c021e
